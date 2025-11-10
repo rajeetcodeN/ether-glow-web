@@ -39,12 +39,53 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
+    /* Accent colors */
+    --accent-blue: 200 100% 50%;
+    --accent-purple: 270 100% 60%;
+    --accent-pink: 330 100% 60%;
+
     /* Custom variables for glassmorphism */
     --glass-bg: rgba(44, 47, 59, 0.4);
     --glass-border: rgba(255, 106, 0, 0.2);
     --glow-orange: rgba(255, 106, 0, 0.5);
     --gradient-orange: linear-gradient(135deg, #FF6A00, #FFB347);
     --gradient-dark: linear-gradient(135deg, #0B0F19, #2C2F3B);
+  }
+
+  .light {
+    /* 2026 Futuristic Light Theme */
+    --background: 0 0% 98%;  /* Off white */
+    --foreground: 222 47% 11%;    /* Dark navy */
+
+    --card: 0 0% 100%;         /* Pure white */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 24 100% 50%;     /* Neon orange */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 13% 91%;   /* Light gray */
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 13% 91%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 24 100% 50%;
+
+    /* Light theme glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 106, 0, 0.3);
+    --glow-orange: rgba(255, 106, 0, 0.4);
   }
 }
 
@@ -54,16 +95,21 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   /* Glassmorphic effect utility */
   .glass {
-    background: rgba(44, 47, 59, 0.4);
+    background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 106, 0, 0.2);
+    border: 1px solid var(--glass-border);
+  }
+
+  .light .glass {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 106, 0, 0.3);
   }
 
   /* Glow effect */
@@ -81,6 +127,51 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Multi-color gradient text */
+  .gradient-text-multi {
+    background: linear-gradient(135deg, #FF6A00, #00D4FF, #B347FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animated gradient background */
+  .animated-gradient {
+    background: linear-gradient(-45deg, #FF6A00, #FFB347, #00D4FF, #B347FF);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating animation */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 10s ease-in-out infinite;
+  }
+
+  /* Pulse glow */
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(255, 106, 0, 0.3), 0 0 40px rgba(255, 106, 0, 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(255, 106, 0, 0.6), 0 0 80px rgba(255, 106, 0, 0.3);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
   }
 }
 

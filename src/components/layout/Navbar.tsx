@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -65,7 +66,8 @@ export const Navbar = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-2">
+            <ThemeToggle />
             <Link to="/contact">
               <Button className="glow-orange-hover">Contact Us</Button>
             </Link>

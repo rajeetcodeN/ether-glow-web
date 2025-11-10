@@ -47,10 +47,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        'accent-blue': 'hsl(var(--accent-blue))',
+        'accent-purple': 'hsl(var(--accent-purple))',
+        'accent-pink': 'hsl(var(--accent-pink))',
       },
       backgroundImage: {
         'gradient-orange': 'linear-gradient(135deg, #FF6A00, #FFB347)',
         'gradient-dark': 'linear-gradient(135deg, #0B0F19, #2C2F3B)',
+        'gradient-multi': 'linear-gradient(135deg, #FF6A00, #00D4FF, #B347FF)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -78,6 +82,14 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.5" },
         },
+        "shimmer": {
+          "0%": { backgroundPosition: "-200% center" },
+          "100%": { backgroundPosition: "200% center" },
+        },
+        "bounce-slow": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -85,6 +97,8 @@ export default {
         "fade-in": "fade-in 0.6s ease-out",
         "float": "float 6s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite",
+        "shimmer": "shimmer 3s linear infinite",
+        "bounce-slow": "bounce-slow 3s ease-in-out infinite",
       },
     },
   },

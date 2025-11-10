@@ -36,6 +36,28 @@ export default function Home() {
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
           />
+          <motion.div
+            animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/2 left-1/3 w-32 h-32 bg-[hsl(var(--accent-blue))]/10 rounded-full blur-2xl"
+          />
+          <motion.div
+            animate={{ x: [0, -30, 0], y: [0, 30, 0] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-[hsl(var(--accent-purple))]/10 rounded-full blur-2xl"
+          />
+          
+          {/* Floating shapes */}
+          <motion.div
+            className="absolute top-1/4 right-1/4 w-16 h-16 border-2 border-primary/30 rounded-lg"
+            animate={{ rotate: 360, y: [0, -20, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 left-1/4 w-12 h-12 border-2 border-[hsl(var(--accent-blue))]/30 rounded-full"
+            animate={{ rotate: -360, y: [0, 20, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -52,7 +74,7 @@ export default function Home() {
               transition={{ delay: 0.2 }}
             >
               Trusted Partner for{" "}
-              <span className="gradient-text">Salesforce, AI,</span> and{" "}
+              <span className="gradient-text-multi animate-pulse-glow">Salesforce, AI,</span> and{" "}
               <span className="gradient-text">Intelligent Automation</span>
             </motion.h1>
             <motion.p
