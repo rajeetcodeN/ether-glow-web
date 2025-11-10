@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Timesheet Management App",
+    "slug": "timesheet",
+    "description": "Streamline time tracking, project management, and payroll with our intuitive timesheet solution.",
+    "features": [
+      "Real-time Time Tracking",
+      "Project & Task Management",
+      "Automated Payroll Integration",
+      "Mobile Access",
+      "Custom Reports & Analytics"
+    ],
+    "tech": ["React", "Node.js", "PostgreSQL", "AWS"]
+  },
+  {
+    "title": "ATS - Applicant Tracking System",
+    "slug": "ats",
+    "description": "Revolutionize your hiring process with AI-powered candidate tracking, screening, and analytics.",
+    "features": [
+      "AI Resume Screening",
+      "Candidate Pipeline Management",
+      "Interview Scheduling",
+      "Collaborative Hiring",
+      "Analytics Dashboard"
+    ],
+    "tech": ["React", "Python", "TensorFlow", "MongoDB"]
+  }
+]

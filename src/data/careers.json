@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Senior Salesforce Developer",
+    "department": "Engineering",
+    "location": "Remote",
+    "type": "Full-time",
+    "description": "Join our team to build innovative Salesforce solutions for enterprise clients."
+  },
+  {
+    "title": "AI/ML Engineer",
+    "department": "AI & Data Science",
+    "location": "Hybrid - New York",
+    "type": "Full-time",
+    "description": "Develop cutting-edge machine learning models to solve complex business problems."
+  },
+  {
+    "title": "SAP Consultant",
+    "department": "Consulting",
+    "location": "Remote",
+    "type": "Contract",
+    "description": "Lead SAP implementation projects for Fortune 500 clients."
+  },
+  {
+    "title": "Technical Recruiter",
+    "department": "Talent Solutions",
+    "location": "Remote",
+    "type": "Full-time",
+    "description": "Source and place top technical talent for our client partners."
+  }
+]

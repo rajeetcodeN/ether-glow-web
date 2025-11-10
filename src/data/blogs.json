@@ -1,0 +1,46 @@
+[
+  {
+    "title": "The Future of AI in Enterprise Automation",
+    "slug": "ai-enterprise-automation",
+    "category": "AI",
+    "excerpt": "Discover how artificial intelligence is transforming business processes and unlocking new efficiencies.",
+    "date": "2024-11-05",
+    "readTime": "8 min",
+    "author": "Digital Biz Tech Team",
+    "image": "/images/blog-ai.jpg",
+    "content": "# The Future of AI in Enterprise Automation\n\nArtificial intelligence is no longer a futuristic concept — it's here, transforming how enterprises operate..."
+  },
+  {
+    "title": "Salesforce Best Practices for 2026",
+    "slug": "salesforce-best-practices-2026",
+    "category": "Salesforce",
+    "excerpt": "Essential strategies for maximizing your Salesforce investment in the modern era.",
+    "date": "2024-10-28",
+    "readTime": "6 min",
+    "author": "Salesforce Team",
+    "image": "/images/blog-salesforce.jpg",
+    "content": "# Salesforce Best Practices for 2026\n\nAs Salesforce continues to evolve, staying ahead requires adopting best practices..."
+  },
+  {
+    "title": "SAP S/4HANA Migration Guide",
+    "slug": "sap-s4hana-migration",
+    "category": "SAP",
+    "excerpt": "A comprehensive guide to planning and executing your SAP S/4HANA migration successfully.",
+    "date": "2024-10-15",
+    "readTime": "10 min",
+    "author": "SAP Consulting Team",
+    "image": "/images/blog-sap.jpg",
+    "content": "# SAP S/4HANA Migration Guide\n\nMigrating to SAP S/4HANA is a critical decision for enterprises..."
+  },
+  {
+    "title": "Data Engineering Trends in 2026",
+    "slug": "data-engineering-trends",
+    "category": "Data Engineering",
+    "excerpt": "Explore the latest trends shaping the future of data engineering and analytics.",
+    "date": "2024-09-30",
+    "readTime": "7 min",
+    "author": "Data Team",
+    "image": "/images/blog-data.jpg",
+    "content": "# Data Engineering Trends in 2026\n\nThe data engineering landscape is rapidly evolving..."
+  }
+]

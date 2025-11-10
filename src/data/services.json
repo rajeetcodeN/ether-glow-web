@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Salesforce Solutions",
+    "slug": "salesforce",
+    "description": "Maximize CRM efficiency with custom Salesforce implementations, integrations, and managed services.",
+    "icon": "cloud",
+    "features": [
+      "Sales Cloud & Service Cloud Implementation",
+      "Custom App Development",
+      "Integration with Third-Party Systems",
+      "Salesforce Consulting & Support"
+    ]
+  },
+  {
+    "title": "AI & Automation",
+    "slug": "ai-automation",
+    "description": "Integrate AI to automate workflows, enhance decision-making, and unlock intelligent insights.",
+    "icon": "brain",
+    "features": [
+      "Machine Learning Models",
+      "Process Automation",
+      "Predictive Analytics",
+      "Natural Language Processing"
+    ]
+  },
+  {
+    "title": "SAP Solutions",
+    "slug": "sap",
+    "description": "Enterprise-grade SAP implementation, customization, and optimization for global operations.",
+    "icon": "database",
+    "features": [
+      "SAP S/4HANA Implementation",
+      "SAP Fiori Development",
+      "SAP Integration Services",
+      "SAP Migration & Upgrade"
+    ]
+  },
+  {
+    "title": "Talent Solutions",
+    "slug": "talent",
+    "description": "Find and recruit top-tier tech talent with our specialized IT staffing and consulting services.",
+    "icon": "users",
+    "features": [
+      "Technical Recruitment",
+      "Contract Staffing",
+      "Permanent Placement",
+      "Talent Consulting"
+    ]
+  }
+]

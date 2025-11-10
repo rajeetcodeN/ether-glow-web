@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Global Retail CRM Transformation",
+    "slug": "retail-crm",
+    "client": "Fortune 500 Retail Chain",
+    "category": "Salesforce",
+    "challenge": "Disparate systems causing customer data fragmentation and poor sales visibility.",
+    "solution": "Implemented unified Salesforce Sales Cloud with custom integrations to legacy systems.",
+    "impact": "35% increase in sales productivity, 50% reduction in customer response time.",
+    "image": "/images/case-retail.jpg"
+  },
+  {
+    "title": "AI-Driven Supply Chain Optimization",
+    "slug": "supply-chain-ai",
+    "client": "Manufacturing Leader",
+    "category": "AI",
+    "challenge": "Inefficient inventory management leading to stockouts and excess inventory.",
+    "solution": "Developed predictive analytics model using machine learning for demand forecasting.",
+    "impact": "20% reduction in inventory costs, 95% forecast accuracy.",
+    "image": "/images/case-supply.jpg"
+  },
+  {
+    "title": "Enterprise SAP Migration",
+    "slug": "sap-migration",
+    "client": "Global Logistics Company",
+    "category": "SAP",
+    "challenge": "Outdated ERP system unable to support global expansion.",
+    "solution": "Migrated to SAP S/4HANA with custom Fiori apps for mobile workforce.",
+    "impact": "40% faster processing times, seamless global operations.",
+    "image": "/images/case-sap.jpg"
+  }
+]
