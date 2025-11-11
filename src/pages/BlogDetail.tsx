@@ -1,21 +1,13 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { useAdmin } from "@/contexts/AdminContext";
+import blogsData from "@/data/blogs.json";
 
 export default function BlogDetail() {
   const { slug } = useParams();
-  const { getData } = useAdmin();
-  const [blog, setBlog] = useState<any>(null);
-
-  useEffect(() => {
-    const blogs = getData("blogs");
-    const foundBlog = blogs.find((b: any) => b.slug === slug);
-    setBlog(foundBlog);
-  }, [slug]);
+  const blog = blogsData.find((b) => b.slug === slug);
 
   if (!blog) {
     return (

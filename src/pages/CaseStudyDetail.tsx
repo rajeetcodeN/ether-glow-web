@@ -1,21 +1,13 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { ArrowLeft } from "lucide-react";
-import { useAdmin } from "@/contexts/AdminContext";
+import caseStudiesData from "@/data/caseStudies.json";
 
 export default function CaseStudyDetail() {
   const { slug } = useParams();
-  const { getData } = useAdmin();
-  const [study, setStudy] = useState<any>(null);
-
-  useEffect(() => {
-    const caseStudies = getData("caseStudies");
-    const foundStudy = caseStudies.find((s: any) => s.slug === slug);
-    setStudy(foundStudy);
-  }, [slug]);
+  const study = caseStudiesData.find((s) => s.slug === slug);
 
   if (!study) {
     return (
