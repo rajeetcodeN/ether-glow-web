@@ -1,13 +1,21 @@
 import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { ArrowLeft, CheckCircle } from "lucide-react";
-import servicesData from "@/data/services.json";
+import { useAdmin } from "@/contexts/AdminContext";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
-  const service = servicesData.find((s) => s.slug === slug);
+  const { getData } = useAdmin();
+  const [service, setService] = useState<any>(null);
+
+  useEffect(() => {
+    const services = getData("services");
+    const foundService = services.find((s: any) => s.slug === slug);
+    setService(foundService);
+  }, [slug]);
 
   if (!service) {
     return (

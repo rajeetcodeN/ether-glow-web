@@ -1,10 +1,17 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { ArrowRight } from "lucide-react";
-import servicesData from "@/data/services.json";
+import { useAdmin } from "@/contexts/AdminContext";
 
 export default function Services() {
+  const { getData } = useAdmin();
+  const [services, setServices] = useState<any[]>([]);
+
+  useEffect(() => {
+    setServices(getData("services"));
+  }, []);
   return (
     <div className="min-h-screen pt-24">
       <div className="container mx-auto px-4 py-12">
@@ -18,7 +25,7 @@ export default function Services() {
         </RevealWrapper>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {servicesData.map((service, index) => (
+          {services.map((service, index) => (
             <RevealWrapper key={service.slug} delay={index * 0.1}>
               <Link to={`/services/${service.slug}`}>
                 <GlassCard className="h-full">

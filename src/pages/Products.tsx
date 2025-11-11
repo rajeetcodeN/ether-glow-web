@@ -1,10 +1,17 @@
+import { useState, useEffect } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
-import productsData from "@/data/products.json";
+import { useAdmin } from "@/contexts/AdminContext";
 
 export default function Products() {
+  const { getData } = useAdmin();
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    setProducts(getData("products"));
+  }, []);
   return (
     <div className="min-h-screen pt-24">
       <div className="container mx-auto px-4 py-12">
@@ -18,7 +25,7 @@ export default function Products() {
         </RevealWrapper>
 
         <div className="space-y-16 max-w-6xl mx-auto">
-          {productsData.map((product, index) => (
+          {products.map((product, index) => (
             <RevealWrapper key={product.slug} delay={index * 0.2}>
               <GlassCard className="overflow-hidden">
                 <div className="grid md:grid-cols-2 gap-8">

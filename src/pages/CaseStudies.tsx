@@ -1,10 +1,17 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { ArrowRight } from "lucide-react";
-import caseStudiesData from "@/data/caseStudies.json";
+import { useAdmin } from "@/contexts/AdminContext";
 
 export default function CaseStudies() {
+  const { getData } = useAdmin();
+  const [caseStudies, setCaseStudies] = useState<any[]>([]);
+
+  useEffect(() => {
+    setCaseStudies(getData("caseStudies"));
+  }, []);
   return (
     <div className="min-h-screen pt-24">
       <div className="container mx-auto px-4 py-12">
@@ -18,7 +25,7 @@ export default function CaseStudies() {
         </RevealWrapper>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {caseStudiesData.map((study, index) => (
+          {caseStudies.map((study, index) => (
             <RevealWrapper key={study.slug} delay={index * 0.1}>
               <Link to={`/case-studies/${study.slug}`}>
                 <GlassCard className="h-full">
