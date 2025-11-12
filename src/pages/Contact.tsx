@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
-import { FloatingOrbs } from "@/components/ui/floating-orbs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, CheckCircle, Sparkles } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Contact() {
@@ -34,37 +32,14 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-24 relative">
-      <FloatingOrbs />
-      
-      <div className="container mx-auto px-4 py-12 relative">
+    <div className="min-h-screen pt-24">
+      <div className="container mx-auto px-4 py-12">
         <RevealWrapper>
-          <div className="text-center mb-20">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 glass-enhanced px-4 py-2 rounded-full mb-6"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium">Let's Connect</span>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-6xl md:text-7xl font-bold mb-8 leading-tight"
-            >
-              <span className="gradient-text-multi text-glow">Get In Touch</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
-            >
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Ready to transform your business? Let's start a conversation.
-            </motion.p>
+            </p>
           </div>
         </RevealWrapper>
 

@@ -1,8 +1,9 @@
+import { useState, useEffect } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { Button } from "@/components/ui/button";
 import { MapPin, Briefcase, Clock } from "lucide-react";
-import careersData from "@/data/careers.json";
+import { useAdmin } from "@/contexts/AdminContext";
 
 const benefits = [
   "Competitive Salary & Equity",
@@ -14,6 +15,12 @@ const benefits = [
 ];
 
 export default function Careers() {
+  const { getData } = useAdmin();
+  const [careers, setCareers] = useState<any[]>([]);
+
+  useEffect(() => {
+    setCareers(getData("careers"));
+  }, []);
   return (
     <div className="min-h-screen pt-24">
       <div className="container mx-auto px-4 py-12">
@@ -50,7 +57,7 @@ export default function Careers() {
           </RevealWrapper>
 
           <div className="space-y-4">
-            {careersData.map((job, index) => (
+            {careers.map((job, index) => (
               <RevealWrapper key={`${job.title}-${index}`} delay={index * 0.1}>
                 <GlassCard hover={false}>
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">

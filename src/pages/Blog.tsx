@@ -1,20 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock } from "lucide-react";
-import blogsData from "@/data/blogs.json";
+import { useAdmin } from "@/contexts/AdminContext";
 
 const categories = ["All", "AI", "Salesforce", "SAP", "Data Engineering"];
 
 export default function Blog() {
+  const { getData } = useAdmin();
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [blogs, setBlogs] = useState<any[]>([]);
+
+  useEffect(() => {
+    setBlogs(getData("blogs"));
+  }, []);
 
   const filteredBlogs =
     selectedCategory === "All"
-      ? blogsData
-      : blogsData.filter((blog) => blog.category === selectedCategory);
+      ? blogs
+      : blogs.filter((blog) => blog.category === selectedCategory);
 
   return (
     <div className="min-h-screen pt-24">
