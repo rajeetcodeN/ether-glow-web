@@ -1,50 +1,98 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
-import { ArrowRight } from "lucide-react";
+import { FloatingOrbs } from "@/components/ui/floating-orbs";
+import { ArrowRight, Sparkles } from "lucide-react";
 import servicesData from "@/data/services.json";
 
 export default function Services() {
   return (
-    <div className="min-h-screen pt-24">
-      <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen pt-24 relative">
+      <FloatingOrbs />
+      
+      <div className="container mx-auto px-4 py-12 relative">
         <RevealWrapper>
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Services</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center mb-20">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 glass-enhanced px-4 py-2 rounded-full mb-6"
+            >
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium">What We Offer</span>
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-6xl md:text-7xl font-bold mb-8 leading-tight"
+            >
+              <span className="gradient-text-multi text-glow">Our Services</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            >
               Comprehensive technology solutions designed to transform your business and drive sustainable growth
-            </p>
+            </motion.p>
           </div>
         </RevealWrapper>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-10 max-w-7xl mx-auto">
           {servicesData.map((service, index) => (
-            <RevealWrapper key={service.slug} delay={index * 0.1}>
+            <RevealWrapper key={service.slug} delay={index * 0.15}>
               <Link to={`/services/${service.slug}`}>
-                <GlassCard className="h-full">
-                  <div className="text-6xl mb-6">
-                    {service.icon === "cloud" && "☁️"}
-                    {service.icon === "brain" && "🧠"}
-                    {service.icon === "database" && "💾"}
-                    {service.icon === "users" && "👥"}
-                  </div>
-                  <h2 className="text-2xl font-bold mb-4">{service.title}</h2>
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-                  
-                  <div className="space-y-2 mb-6">
-                    {service.features.map((feature) => (
-                      <div key={feature} className="flex items-center text-sm">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
+                <motion.div
+                  whileHover={{ y: -12, scale: 1.01 }}
+                  transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                >
+                  <GlassCard className="h-full tilt-hover group">
+                    <motion.div 
+                      className="text-7xl mb-8"
+                      whileHover={{ scale: 1.15, rotate: [0, -8, 8, 0] }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      {service.icon === "cloud" && "☁️"}
+                      {service.icon === "brain" && "🧠"}
+                      {service.icon === "database" && "💾"}
+                      {service.icon === "users" && "👥"}
+                    </motion.div>
+                    <h2 className="text-3xl font-bold mb-5 group-hover:text-primary transition-colors duration-300">
+                      {service.title}
+                    </h2>
+                    <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+                      {service.description}
+                    </p>
+                    
+                    <div className="space-y-3 mb-8">
+                      {service.features.map((feature, idx) => (
+                        <motion.div
+                          key={feature}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 + idx * 0.05 }}
+                          className="flex items-start gap-3 text-sm group/item"
+                        >
+                          <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0 group-hover/item:scale-150 transition-transform" />
+                          <span className="leading-relaxed">{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
 
-                  <div className="flex items-center text-primary font-medium group">
-                    Learn More
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
-                  </div>
-                </GlassCard>
+                    <motion.div
+                      className="flex items-center text-primary font-semibold text-lg group-hover:gap-3 gap-2 transition-all duration-300"
+                      whileHover={{ x: 5 }}
+                    >
+                      Learn More
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                    </motion.div>
+                  </GlassCard>
+                </motion.div>
               </Link>
             </RevealWrapper>
           ))}

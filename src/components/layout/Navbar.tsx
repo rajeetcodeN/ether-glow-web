@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -36,40 +36,62 @@ export const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass py-3" : "bg-transparent py-5"
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "glass-enhanced py-3 shadow-lg" : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-orange rounded-lg flex items-center justify-center glow-orange">
-              <span className="text-white font-bold text-xl">DB</span>
-            </div>
-            <span className="text-xl font-bold hidden sm:block">Digital Biz Tech</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <motion.div
+              whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+              className="w-11 h-11 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden group-hover:shadow-primary/50 transition-shadow duration-300"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="text-white font-bold text-xl relative z-10">DB</span>
+            </motion.div>
+            <span className="text-xl font-bold hidden sm:block group-hover:text-primary transition-colors">
+              Digital Biz Tech
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.path ? "text-primary" : "text-muted-foreground"
-                }`}
+                className="relative group px-4 py-2"
               >
-                {link.name}
+                <span className={`text-sm font-medium transition-colors duration-300 ${
+                  location.pathname === link.path ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+                }`}>
+                  {link.name}
+                </span>
+                {location.pathname === link.path && (
+                  <motion.div
+                    layoutId="navbar-indicator"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-primary to-transparent"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </Link>
             ))}
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle />
             <Link to="/contact">
-              <Button className="glow-orange-hover">Contact Us</Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                <Button className="glow-orange-hover depth-shadow group">
+                  Contact Us
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
             </Link>
           </div>
 
