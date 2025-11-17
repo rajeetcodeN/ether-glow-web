@@ -1,6 +1,8 @@
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
-import { Target, Eye, Award } from "lucide-react";
+import { Target, Eye, Award, ExternalLink } from "lucide-react";
+import { useAdmin } from "@/contexts/AdminContext";
+import { Button } from "@/components/ui/button";
 
 const timeline = [
   { year: "2009", event: "Digital Biz Tech founded with a vision to transform enterprise technology" },
@@ -29,6 +31,9 @@ const values = [
 ];
 
 export default function About() {
+  const { getData } = useAdmin();
+  const team = getData("team") || [];
+
   return (
     <div className="min-h-screen pt-24">
       <div className="container mx-auto px-4 py-12">
@@ -111,6 +116,65 @@ export default function About() {
             ))}
           </div>
         </div>
+
+        {/* Team Section */}
+        {team.length > 0 && (
+          <div className="mt-20">
+            <RevealWrapper>
+              <h2 className="text-3xl font-bold mb-8 text-center">Meet Our Team</h2>
+            </RevealWrapper>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+              {team.map((member: any, index: number) => (
+                <RevealWrapper key={member.id} delay={index * 0.1}>
+                  <GlassCard className="text-center h-full">
+                    {member.avatar ? (
+                      <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-secondary/50">
+                        <img
+                          src={member.avatar}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="text-3xl font-bold text-primary">
+                          {member.name.charAt(0)}
+                        </span>
+                      </div>
+                    )}
+
+                    <h3 className="text-lg font-bold mb-2">{member.name}</h3>
+                    <p className="text-xs font-semibold text-primary mb-3 uppercase tracking-wide">
+                      {member.role}
+                    </p>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                      {member.description}
+                    </p>
+
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-auto"
+                      >
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-full border-primary/50 hover:bg-primary/10"
+                        >
+                          View LinkedIn
+                          <ExternalLink size={14} className="ml-2" />
+                        </Button>
+                      </a>
+                    )}
+                  </GlassCard>
+                </RevealWrapper>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

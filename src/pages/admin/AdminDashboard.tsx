@@ -2,7 +2,7 @@ import { useAdmin } from "@/contexts/AdminContext";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { FileText, Briefcase, Package, Users, Settings, Plus, Scale } from "lucide-react";
+import { FileText, Briefcase, Package, Users, Settings, Plus, Scale, UsersRound } from "lucide-react";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 
 const stats = [
@@ -11,6 +11,7 @@ const stats = [
   { label: "Services", icon: Settings, path: "/admin/services", color: "text-purple-500" },
   { label: "Products", icon: Package, path: "/admin/products", color: "text-orange-500" },
   { label: "Careers", icon: Users, path: "/admin/careers", color: "text-pink-500" },
+  { label: "Team Members", icon: UsersRound, path: "/admin/team", color: "text-indigo-500" },
   { label: "Legal Docs", icon: Scale, path: "/admin/legal-docs", color: "text-cyan-500" },
 ];
 
@@ -24,9 +25,11 @@ export default function AdminDashboard() {
         <p className="text-muted-foreground">Manage your website content</p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {stats.map((stat, index) => {
-          const count = getData(stat.label.toLowerCase().replace(" ", "")).length;
+          const dataKey = stat.label.toLowerCase().replace(/\s+/g, "");
+          const actualKey = dataKey === "teammembers" ? "team" : dataKey === "legaldocs" ? "legaldocs" : dataKey;
+          const count = getData(actualKey).length;
           return (
             <RevealWrapper key={stat.label} delay={index * 0.1}>
               <GlassCard className="text-center">
