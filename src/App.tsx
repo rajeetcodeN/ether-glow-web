@@ -28,6 +28,7 @@ import ServicesManager from "./pages/admin/ServicesManager";
 import ProductsManager from "./pages/admin/ProductsManager";
 import CareersManager from "./pages/admin/CareersManager";
 import LegalDocsManager from "./pages/admin/LegalDocsManager";
+import TeamManager from "./pages/admin/TeamManager";
 
 const queryClient = new QueryClient();
 
@@ -128,6 +129,7 @@ const App = () => (
               <Route path="products" element={<ProductsManager />} />
               <Route path="careers" element={<CareersManager />} />
               <Route path="legal-docs" element={<LegalDocsManager />} />
+              <Route path="team" element={<TeamManager />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />
