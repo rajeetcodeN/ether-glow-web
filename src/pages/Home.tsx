@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { ArrowRight, Zap, Users, TrendingUp, Award } from "lucide-react";
+import { useAdmin } from "@/contexts/AdminContext";
 import servicesData from "@/data/services.json";
 import caseStudiesData from "@/data/caseStudies.json";
 import blogsData from "@/data/blogs.json";
@@ -15,11 +16,10 @@ const stats = [
   { label: "Client Satisfaction", value: "98%", icon: Zap },
 ];
 
-const partners = [
-  "Salesforce", "SAP", "AWS", "Microsoft", "Google Cloud", "Oracle"
-];
-
 export default function Home() {
+  const { getData } = useAdmin();
+  const clients = getData("clients") || [];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -240,29 +240,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section className="py-20 border-t border-primary/20">
-        <div className="container mx-auto px-4">
-          <RevealWrapper>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Trusted by Industry Leaders</h2>
-            </div>
-          </RevealWrapper>
+      {/* Clients Section */}
+      {clients.length > 0 && (
+        <section className="py-20 border-t border-primary/20 overflow-hidden">
+          <div className="container mx-auto px-4">
+            <RevealWrapper>
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Trusted by Industry Leaders</h2>
+              </div>
+            </RevealWrapper>
 
-          <div className="flex flex-wrap justify-center items-center gap-12">
-            {partners.map((partner, index) => (
+            {/* Scrolling logos container */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+              
               <motion.div
-                key={partner}
-                initial={{ opacity: 0.5 }}
-                whileHover={{ opacity: 1, scale: 1.1 }}
-                className="text-xl font-semibold text-muted-foreground"
+                className="flex gap-12 items-center"
+                animate={{
+                  x: [0, -1000],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
               >
-                {partner}
+                {/* Duplicate clients for seamless loop */}
+                {[...clients, ...clients, ...clients].map((client: any, index: number) => (
+                  <div
+                    key={`${client.id}-${index}`}
+                    className="flex-shrink-0 w-40 h-24 flex items-center justify-center glass-enhanced rounded-lg p-4 hover:scale-110 transition-transform duration-300"
+                  >
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                ))}
               </motion.div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }

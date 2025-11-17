@@ -14,6 +14,7 @@ import {
   X,
   Scale,
   UsersRound,
+  Building2,
 } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,6 +27,7 @@ const navItems = [
   { path: "/admin/products", label: "Products", icon: Package },
   { path: "/admin/careers", label: "Careers", icon: Users },
   { path: "/admin/team", label: "Team Members", icon: UsersRound },
+  { path: "/admin/clients", label: "Clients", icon: Building2 },
   { path: "/admin/legal-docs", label: "Legal Documents", icon: Scale },
 ];
 
