@@ -12,6 +12,7 @@ import {
   LogOut,
   Menu,
   X,
+  Scale,
 } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,6 +24,7 @@ const navItems = [
   { path: "/admin/services", label: "Services", icon: Settings },
   { path: "/admin/products", label: "Products", icon: Package },
   { path: "/admin/careers", label: "Careers", icon: Users },
+  { path: "/admin/legal-docs", label: "Legal Documents", icon: Scale },
 ];
 
 export function AdminLayout() {
