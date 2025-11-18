@@ -57,22 +57,23 @@ export function AdminProvider({ children }: { children: ReactNode }) {
   };
 
   const getData = (type: string) => {
-    if (dataCache[type]) {
-      return dataCache[type];
-    }
-
+    // Always check localStorage first for persistence
     const stored = localStorage.getItem(`admin_${type}`);
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        setDataCache(prev => ({ ...prev, [type]: parsed }));
         return parsed;
-      } catch {
-        return [];
+      } catch (error) {
+        console.error(`Error parsing ${type} from localStorage:`, error);
       }
     }
 
-    // Load from static JSON files
+    // If no localStorage data, check cache
+    if (dataCache[type]) {
+      return dataCache[type];
+    }
+
+    // Load from static JSON files as last fallback
     let defaultData: any[] = [];
     try {
       switch (type) {
@@ -90,6 +91,12 @@ export function AdminProvider({ children }: { children: ReactNode }) {
           break;
         case "careers":
           defaultData = require("@/data/careers.json");
+          break;
+        case "team":
+          defaultData = require("@/data/team.json");
+          break;
+        case "clients":
+          defaultData = require("@/data/clients.json");
           break;
       }
     } catch {

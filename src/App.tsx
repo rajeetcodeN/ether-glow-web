@@ -2,9 +2,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ChatbotBubble } from "@/components/ChatbotBubble";
 import { AdminProvider } from "@/contexts/AdminContext";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { ProtectedRoute } from "@/pages/admin/ProtectedRoute";
@@ -33,14 +34,17 @@ import ClientsManager from "./pages/admin/ClientsManager";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AdminProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
+// Wrapper component to access location for chatbot logic
+function AppContent() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+  
+  // Replace with your actual n8n chat embed URLs
+  const MAIN_CHAT_URL = ""; // Add your n8n chat URL for main website
+  
+  return (
+    <>
+      <Routes>
             {/* Public Routes */}
             <Route path="/" element={
               <div className="flex flex-col min-h-screen">
