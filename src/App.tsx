@@ -140,6 +140,23 @@ function AppContent() {
 
             <Route path="*" element={<NotFound />} />
           </Routes>
+          
+          {/* Chatbot for main website (not admin) */}
+          {!isAdminRoute && MAIN_CHAT_URL && (
+            <ChatbotBubble chatUrl={MAIN_CHAT_URL} position="bottom-right" />
+          )}
+        </>
+  );
+}
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <AdminProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppContent />
         </BrowserRouter>
       </TooltipProvider>
     </AdminProvider>
