@@ -2,6 +2,7 @@ import { Link, useLocation, Outlet } from "react-router-dom";
 import { useAdmin } from "@/contexts/AdminContext";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
+import { ChatbotBubble } from "@/components/ChatbotBubble";
 import {
   LayoutDashboard,
   FileText,
@@ -35,6 +36,9 @@ export function AdminLayout() {
   const { logout } = useAdmin();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  
+  // Replace with your actual n8n chat embed URL for admin
+  const ADMIN_CHAT_URL = ""; // Add your n8n chat URL for admin panel
 
   return (
     <div className="min-h-screen bg-background">
@@ -106,6 +110,11 @@ export function AdminLayout() {
       <main className="lg:ml-64 p-6">
         <Outlet />
       </main>
+      
+      {/* Admin Chatbot */}
+      {ADMIN_CHAT_URL && (
+        <ChatbotBubble chatUrl={ADMIN_CHAT_URL} position="bottom-right" />
+      )}
     </div>
   );
 }
